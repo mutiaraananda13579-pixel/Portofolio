@@ -7,38 +7,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* Background Estetik Earth Tone: Tidak mencrang, teduh, dan elegan */
+    /* Background Estetik: Bergerak lembut secara berkala (Shifting Gradient) */
     body {
-      background: radial-gradient(circle at top right, #2c3531, #111827 70%, #0b0f19);
+      background: linear-gradient(135deg, #111827, #1e2522, #1c2e24, #0b0f19);
+      background-size: 400% 400%;
+      animation: softGradient 15s ease infinite;
       position: relative;
       overflow: hidden;
     }
 
-    /* Efek Cahaya Ambient Muted Sage Green di Latar Belakang */
+    /* Animasi Perubahan Warna Latar Belakang yang Kalem */
+    @keyframes softGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efek Cahaya Ambient Lembut */
     body::before {
       content: "";
       position: absolute;
-      width: 320px;
-      height: 320px;
-      background: #86efac; /* Muted Green */
-      filter: blur(140px);
-      top: 15%;
-      left: 10%;
-      opacity: 0.12;
+      width: 350px;
+      height: 350px;
+      background: #86efac;
+      filter: blur(150px);
+      top: 10%;
+      left: 15%;
+      opacity: 0.08;
       pointer-events: none;
     }
 
-    body::after {
-      content: "";
+    /* Efek Partikel Melayang (Floating Elements) */
+    .floating-particle {
       position: absolute;
-      width: 300px;
-      height: 300px;
-      background: #64748b; /* Muted Slate */
-      filter: blur(130px);
-      bottom: 20%;
-      right: 15%;
-      opacity: 0.15;
+      background: linear-gradient(135deg, rgba(134, 239, 172, 0.1), rgba(20, 184, 166, 0.05));
+      border-radius: 50%;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
     }
 
     .fade-in {
@@ -59,10 +71,12 @@
 
 <body class="flex items-center justify-center h-screen text-center px-6 min-h-screen">
 
-  <div class="fade-in bg-slate-900/75 backdrop-blur-xl rounded-3xl shadow-2xl p-10 max-w-lg border border-white/20 text-slate-100 relative z-10">
+  <div id="particle-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+
+  <div class="fade-in bg-slate-900/85 backdrop-blur-xl rounded-3xl shadow-2xl p-10 max-w-lg border border-white/15 text-slate-100 relative z-10 transition duration-500 hover:border-emerald-500/30">
 
     <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-      <i class="fas fa-check text-emerald-400 text-2xl animate-pulse"></i>
+      <i class="fas fa-check text-emerald-400 text-2xl animate-bounce" style="animation-duration: 2s;"></i>
     </div>
 
     <h1 class="text-4xl font-black mb-4 glow text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-zinc-200 to-teal-400 tracking-wide">
@@ -95,6 +109,36 @@
   </div>
 
   <script>
+    // 1. Script Otomatis Membuat Partikel Melayang yang Lembut
+    function createParticles() {
+      const container = document.getElementById('particle-container');
+      const particleCount = 8; // Jumlah partikel agar tidak memberatkan device
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('floating-particle');
+
+        // Mengatur ukuran acak
+        const size = Math.floor(Math.random() * 60) + 20;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Posisi horizontal acak
+        particle.style.left = `${Math.random() * 100}%`;
+
+        // Durasi animasi acak agar gerakan bervariasi (lambat dan tenang)
+        const duration = Math.random() * 10 + 10;
+        const delay = Math.random() * 5;
+        particle.style.animation = `floatUp ${duration}s linear ${delay}s infinite`;
+
+        container.appendChild(particle);
+      }
+    }
+
+    // Jalankan pembuat partikel saat halaman di-load
+    createParticles();
+
+    // 2. Script Countdown Redirect
     let timeLeft = 10;
     const countdownEl = document.getElementById("countdown");
 
