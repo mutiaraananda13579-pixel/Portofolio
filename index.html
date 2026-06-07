@@ -20,50 +20,57 @@
       transform-origin: bottom left;
       transform: rotate(-45deg);
     }
+    /* Grid Pattern Estetik */
+    .bg-grid-pattern {
+      background-color: #0f172a; /* Slate 900 */
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
   </style>
 </head>
-<body class="bg-sky-300">
-  <header class="flex justify-between items-center bg-white/50 backdrop-blur py-6 px-8 rounded shadow m-10 sticky top-0 z-50">
+<body class="bg-grid-pattern min-h-screen">
+  <header class="flex justify-between items-center bg-white/10 backdrop-blur-md py-6 px-8 rounded shadow m-10 sticky top-0 z-50 border border-white/10">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-full bg-pink shadow-lg overflow-hidden">
         <img src="galery.jpg" class="w-32 transition-transform duration-300 hover:rotate-6 hover:scale-110" />
       </div>
-      <h1 class="text-xl font-semibold text-gray-800">Mutiara Ananda</h1>
+      <h1 class="text-xl font-semibold text-white">Mutiara Ananda</h1>
     </div>
     <div class="flex items-center px-4 lg:hidden">
       <button id="hamburger" type="button" class="relative z-20">
-        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out"></span>
-        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out"></span>
-        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out"></span>
+        <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
+        <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
+        <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
       </button>
     </div>
     <nav id="nav-menu"
-      class="absolute top-full right-6 bg-white shadow-lg rounded-lg w-48
+      class="absolute top-full right-6 bg-transparent w-auto
              transform scale-0 opacity-0 transition duration-300 ease-in-out origin-top-right
              lg:static lg:block lg:bg-transparent lg:shadow-none lg:w-auto lg:transform-none lg:opacity-100 lg:scale-100">
-        <ul class="block lg:flex lg:space-x-6">
-        <li><a href="#about" class="block px-4 py-2 text-slate-700 hover:text-teal-500">About me</a></li>
-        <li><a href="#skills" class="block px-4 py-2 text-slate-700 hover:text-teal-500">Skills</a></li>
-        <li><a href="#gallery" class="block px-4 py-2 text-slate-700 hover:text-teal-500">Project</a></li>
-        <li><a href="#contact" class="block px-4 py-2 text-slate-700 hover:text-teal-500">Contact</a></li>
+        <ul class="block space-y-3 lg:space-y-0 lg:flex lg:space-x-6">
+        <li><a href="#about" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">About me</a></li>
+        <li><a href="#skills" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Skills</a></li>
+        <li><a href="#gallery" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Project</a></li>
+        <li><a href="#contact" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Contact</a></li>
         </ul>
     </nav>
   </header>
 
-<!--about section star-->
 <section id="about" 
   class="flex flex-col-reverse lg:flex-row items-center justify-around 
          px-4 sm:px-6 lg:px-10 pt-20 pb-16
-         bg-white/50 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg relative">
+         bg-slate-900/60 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg relative border border-white/10">
 
     <div class="w-full max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-left mb-6 lg:mb-0">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
       Hi, I'm Mutiara Ananda
     </h2>
-    <p class="text-gray-800 mb-3 leading-relaxed text-justify">
+    <p class="text-slate-300 mb-3 leading-relaxed text-justify">
       Saya adalah lulusan SMK jurusan Rekayasa Perangkat Lunak yang memiliki ketertarikan di bidang teknologi dan pengolahan data. Selama masa pendidikan, saya telah mempelajari berbagai dasar seperti pembuatan website, pengelolaan data, serta penggunaan perangkat lunak pendukung lainnya.
     </p>
-    <p class="text-gray-800 mb-3 leading-relaxed text-justify">
+    <p class="text-slate-300 mb-3 leading-relaxed text-justify">
       Saya memiliki kemampuan untuk bekerja secara mandiri maupun dalam tim, serta terbiasa menyelesaikan tugas dengan teliti dan tepat waktu. Selain itu, saya juga memiliki semangat belajar yang tinggi dan mampu beradaptasi dengan lingkungan serta hal baru.
     </p>
     <a 
@@ -90,50 +97,44 @@
     </div>
   </div>
 </section>
-<!---about section end-->
-
-<!--galery section start-->
-<section id="gallery" class="pt-20 pb-16 bg-white/50 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg">
+<section id="gallery" class="pt-20 pb-16 bg-slate-900/60 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg border border-white/10">
   <div class="container mx-auto px-6 sm:px-10">
     <div class="text-center mb-10">
-      <h2 class="text-4xl font-bold">Project</h2>
+      <h2 class="text-4xl font-bold text-white">Project</h2>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden p-4">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
         <img src="produk.png" alt="produk" class="w-full h-64 object-cover rounded-lg">
-        <p class="text-sm text-gray-600 mt-2">
+        <p class="text-sm text-slate-300 mt-2">
           Tampilan produk yang pernah saya kembangkan.
         </p>
       </div>
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden p-4">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
         <img src="admin.png" alt="perpus admin" class="w-full h-64 object-cover rounded-lg">
-        <p class="text-sm text-gray-600 mt-2">
+        <p class="text-sm text-slate-300 mt-2">
           Dashboard admin perpustakaan.
         </p>
       </div>
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden p-4">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
         <img src="e-commerce.png" alt="ecommerce" class="w-full h-64 object-cover rounded-lg">
-        <p class="text-sm text-gray-600 mt-2">
+        <p class="text-sm text-slate-300 mt-2">
           Dashboard e-commerce.
         </p>
       </div>
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden p-4">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
         <img src="login.png" alt="login perpus" class="w-full h-64 object-cover rounded-lg">
-        <p class="text-sm text-gray-600 mt-2">
+        <p class="text-sm text-slate-300 mt-2">
           Halaman login perpustakaan.
         </p>
       </div>
     </div>
   </div>
 </section>
-<!--galery section end-->
-
-<!-- Skills Section star -->
-<section id="skills" class="pt-20 pb-16 bg-slate-700 
-       m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg">
+<section id="skills" class="pt-20 pb-16 bg-slate-850 
+       m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg border border-white/10">
   <div class="container mx-auto px-6 sm:px-10">
     <div class="text-center mb-12">
-      <h4 class="font-bold text-lg text-blue-500 mb-2">Skills</h4>
+      <h4 class="font-bold text-lg text-blue-400 mb-2">Skills</h4>
       <h2 class="font-bold text-white text-3xl sm:text-4xl lg:text-5xl">
         Yang Pernah Dipelajari
       </h2>
@@ -155,27 +156,24 @@
     </div>
   </div>
 </section>
-<!--skill end-->
-
-<!-- Contact Section -->
-<section id="contact" class="flex flex-1 items-center justify-center px-6 sm:px-16 py-20 bg-white/50 backdrop-blur m-4 sm:m-10 rounded-2xl shadow-lg">
+<section id="contact" class="flex flex-1 items-center justify-center px-6 sm:px-16 py-20 bg-slate-900/60 backdrop-blur m-4 sm:m-10 rounded-2xl shadow-lg border border-white/10">
   <div class="max-w-md w-full text-center">
-    <h2 class="text-2xl sm:text-3xl font-black mb-10">Contact Me</h2>
+    <h2 class="text-2xl sm:text-3xl font-black mb-10 text-white">Contact Me</h2>
 
     <form id="contactForm" action="https://formspree.io/f/xldwalbo" method="POST">
       <input 
-        class="w-full mb-4 p-3 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         type="text" name="Nama" placeholder="Nama Lengkap" required
       />
 
       <input 
-        class="w-full mb-4 p-3 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
         type="email" name="Email" placeholder="Email" required
       />
 
       <textarea 
         rows="4" name="Pesan"
-        class="w-full mb-4 p-3 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
         placeholder="Tuliskan Pesanmu..." required
       ></textarea>
 
@@ -206,22 +204,21 @@
   });
 </script>
 
-  <!-- Footer Contact -->
-<section class="flex justify-center px-6 sm:px-16 py-10 
-                bg-slate-700 text-white m-4 sm:m-10 
-                rounded-2xl shadow-lg">
+  <section class="flex justify-center px-6 sm:px-16 py-10 
+                 bg-slate-850 text-white m-4 sm:m-10 
+                 rounded-2xl shadow-lg border border-white/10">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
 
     <div class="flex items-center justify-center sm:justify-between 
-            bg-slate-800 rounded-xl p-4 shadow-md flex-wrap gap-2">
+            bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md flex-wrap gap-2">
       <h2 class="text-lg font-semibold text-white">📧 Email</h2>
       <a href="mailto:mutiarananda13579@gmail.com" 
       class="text-sky-400 hover:text-purple-400 font-medium break-all">
         mutiarananda13579@gmail.com
       </a>
     </div>
-    <div class="flex items-center justify-between bg-slate-800 rounded-xl p-4 shadow-md">
-      <h2 class="text-lg font-semibold">📞 Telepon</h2>
+    <div class="flex items-center justify-between bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md">
+      <h2 class="text-lg font-semibold text-white">📞 Telepon</h2>
       <a href="tel:083139591080" 
          class="text-sky-400 hover:text-purple-400 font-medium">
         0831-3959-1080
