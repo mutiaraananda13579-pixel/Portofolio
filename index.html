@@ -21,13 +21,13 @@
       transform: rotate(-45deg);
     }
     
-    /* Grid Pattern Lebih Besar & Nyaman Di Mata */
+    /* Grid Pattern Besar */
     .bg-grid-pattern {
       background-color: #0f172a; /* Slate 900 */
       background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-      background-size: 100px 100px; /* Ukuran diperbesar agar tidak pusing */
+      background-size: 100px 100px;
       position: relative;
       overflow-x: hidden;
     }
@@ -54,38 +54,31 @@
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     }
 
-    /* Efek Bintang Jatuh (Shooting Star) */
-    @keyframes shootingStar {
+    /* Perbaikan Animasi Bintang Jatuh */
+    @keyframes shooting {
       0% {
-        transform: translateX(0) translateY(0) rotate(-45deg) scale(0);
+        transform: rotate(-45deg) translateX(0);
+        opacity: 0;
+      }
+      10% {
         opacity: 1;
       }
       70% {
         opacity: 1;
       }
       100% {
-        transform: translateX(-400px) translateY(400px) rotate(-45deg) scale(1);
+        transform: rotate(-45deg) translateX(-600px);
         opacity: 0;
       }
     }
     .shooting-star {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-      border-radius: 50%;
-      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+      height: 2px;
+      background: linear-gradient(-90deg, #ffffff, rgba(0, 0, 0, 0));
+      border-radius: 999px;
+      filter: drop-shadow(0 0 6px #ffffff);
       pointer-events: none;
-    }
-    /* Menggunakan pseudo-element ekor bintang jatuh */
-    .shooting-star::before {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 1px;
-      right: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
-      transform: translateX(0);
+      opacity: 0;
     }
   </style>
 </head>
@@ -97,8 +90,9 @@
   <div class="glitter-star w-1.5 h-1.5 top-[950px] right-[8%]" style="animation: twinkle 3.5s infinite 0.5s;"></div>
   <div class="glitter-star w-1 h-1 top-[1500px] left-[5%]" style="animation: twinkle 2.8s infinite 1.5s;"></div>
 
-  <div class="shooting-star top-12 right-[10%]" style="animation: shootingStar 6s linear infinite 1s;"></div>
-  <div class="shooting-star top-[700px] right-[30%]" style="animation: shootingStar 8s linear infinite 4s;"></div>
+  <div class="shooting-star w-[120px] top-10 right-10" style="animation: shooting 5s linear infinite 1s;"></div>
+  <div class="shooting-star w-[150px] top-[500px] right-24" style="animation: shooting 7s linear infinite 3s;"></div>
+  <div class="shooting-star w-[100px] top-[1000px] right-5" style="animation: shooting 6s linear infinite 5s;"></div>
 
   <header class="flex justify-between items-center bg-slate-900/40 backdrop-blur-md py-6 px-8 rounded shadow m-4 sm:m-10 sticky top-4 z-50 border border-white/10">
     <div class="flex items-center gap-3">
@@ -296,7 +290,6 @@
 </section>
 
   <script>
-    // Navbar fixed saat scroll
     window.onscroll = function () {
       const header = document.querySelector("header");
       const fixedNav = header.offsetTop;
@@ -308,7 +301,6 @@
       }
     };
 
-    // Toggle hamburger dengan aman
     const hamburger = document.querySelector("#hamburger");
     const navMenu = document.querySelector("#nav-menu");
 
@@ -324,7 +316,6 @@
       }
     });
     
-    // Tutup menu saat klik link
     document.querySelectorAll("#nav-menu a").forEach(link =>
       link.addEventListener("click", () => {
         hamburger.classList.remove("hamburger-active");
