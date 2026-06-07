@@ -55,29 +55,29 @@
       z-index: 10;
     }
 
-    /* Animasi Bintang Jatuh Meluncur Kebawah */
+    /* Animasi Hujan Bintang Jatuh Instan & Cepat */
     @keyframes shooting {
       0% {
         transform: rotate(-40deg) translateX(0);
         opacity: 0;
       }
-      10% {
+      30% {
         opacity: 1;
       }
-      80% {
+      70% {
         opacity: 1;
       }
       100% {
-        transform: rotate(-40deg) translateX(-1000px);
+        transform: rotate(-40deg) translateX(-400px); /* Jarak meluncur disingkat agar performa lancar */
         opacity: 0;
       }
     }
     .shooting-star {
       position: absolute;
-      height: 3px;
+      height: 2px; /* Dibuat ramping estetik mirip foto */
       background: linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
       border-radius: 999px;
-      filter: drop-shadow(0 0 8px #ffffff);
+      filter: drop-shadow(0 0 6px #ffffff);
       pointer-events: none;
       opacity: 0;
       z-index: 20;
@@ -240,7 +240,7 @@
   </section>
 
   <script>
-    // 1. Script Form Spree Contact
+    // 1. Script Form Spree
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -257,7 +257,7 @@
       }
     });
 
-    // 2. Script Navbar Fixed on Scroll
+    // 2. Script Navbar Sticky
     window.onscroll = function () {
       const header = document.querySelector("header");
       const fixedNav = header.offsetTop;
@@ -291,7 +291,7 @@
       })
     );
 
-    // 4. SCRIPT AUTO BINTANG JATUH
+    // 4. SCRIPT MODIFIKASI: Efek Hujan Meteor Intensitas Tinggi (Banyak & Ringan)
     function createShootingStar() {
       const container = document.getElementById('shooting-stars-container');
       if (!container) return;
@@ -302,9 +302,12 @@
       const bodyHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight);
       
       const randomTop = Math.floor(Math.random() * bodyHeight);
-      const randomRight = Math.floor(Math.random() * 60); 
-      const randomWidth = Math.floor(Math.random() * 80) + 120;
-      const randomDuration = (Math.random() * 3 + 3).toFixed(1);
+      // Rentang sebaran horizontal dibuat lebih luas (0% - 90%)
+      const randomRight = Math.floor(Math.random() * 90); 
+      // Ukuran diperpendek (70px - 130px) agar efek hujan meluncur terlihat tajam & cepat
+      const randomWidth = Math.floor(Math.random() * 60) + 70;
+      // Waktu meluncur dibuat super cepat (1 sampai 2.5 detik)
+      const randomDuration = (Math.random() * 1.5 + 1).toFixed(1);
 
       star.style.top = `${randomTop}px`;
       star.style.right = `${randomRight}%`;
@@ -313,12 +316,14 @@
 
       container.appendChild(star);
 
+      // Otomatis langsung dihapus dari memori begitu selesai animasi
       setTimeout(() => {
         star.remove();
       }, randomDuration * 1000);
     }
 
-    setInterval(createShootingStar, 1500);
+    // Interval dipercepat drastis ke 200 milidetik (0.2 detik sekali meluncur)
+    setInterval(createShootingStar, 200);
   </script>
 </body>
 </html>
