@@ -4,66 +4,93 @@
   <meta charset="UTF-8">
   <title>Terima Kasih</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    /* Background Estetik Earth Tone: Tidak mencrang, teduh, dan elegan */
     body {
-      background: linear-gradient(135deg, #38bdf8, #46b7eb, #ec4899);
-      background-size: 300% 300%;
-      animation: gradientMove 10s ease infinite;
+      background: radial-gradient(circle at top right, #2c3531, #111827 70%, #0b0f19);
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Efek Cahaya Ambient Muted Sage Green di Latar Belakang */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: #86efac; /* Muted Green */
+      filter: blur(140px);
+      top: 15%;
+      left: 10%;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: #64748b; /* Muted Slate */
+      filter: blur(130px);
+      bottom: 20%;
+      right: 15%;
+      opacity: 0.15;
+      pointer-events: none;
     }
 
     .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
+      animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Efek Teks Menyala Kalem */
     .glow {
-      text-shadow: 
-        0 0 10px rgba(255,255,255,0.6),
-        0 0 20px rgba(236,72,153,0.6),
-        0 0 30px rgba(59,130,246,0.6);
+      text-shadow: 0 0 15px rgba(134, 239, 172, 0.2);
     }
   </style>
 </head>
 
-<body class="flex items-center justify-center h-screen text-center px-6">
+<body class="flex items-center justify-center h-screen text-center px-6 min-h-screen">
 
-  <div class="fade-in bg-white rounded-3xl shadow-2xl p-10 max-w-lg text-gray-800">
+  <div class="fade-in bg-slate-900/75 backdrop-blur-xl rounded-3xl shadow-2xl p-10 max-w-lg border border-white/20 text-slate-100 relative z-10">
 
-    <h1 class="text-4xl font-extrabold mb-4 glow">💦 Terima Kasih 🙏</h1>
+    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+      <i class="fas fa-check text-emerald-400 text-2xl animate-pulse"></i>
+    </div>
+
+    <h1 class="text-4xl font-black mb-4 glow text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-zinc-200 to-teal-400 tracking-wide">
+      Terima Kasih!
+    </h1>
     
-    <p class="text-lg mb-6 leading-relaxed">
-      Pesanmu sudah berhasil terkirim.  
-      Kami sangat menghargai setiap waktu dan kata yang kamu sampaikan.
+    <p class="text-slate-300 text-base mb-6 leading-relaxed">
+      Pesanmu sudah berhasil mendarat dengan aman.  
+      Saya sangat menghargai setiap waktu dan pesan hangat yang kamu sampaikan.
     </p>
 
-    <p class="italic mb-6 text-pink-600">
+    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent my-6"></div>
+
+    <p class="italic mb-4 text-emerald-300/90 font-medium text-sm leading-relaxed">
       "Jangan tunggu sempurna untuk melangkah.  
       Justru dengan melangkah, kamu akan menjadi lebih sempurna."
     </p>
 
-    <p class="text-sm opacity-80 mb-8 text-blue-600">
-      Hidup ini bukan tentang siapa yang paling cepat, tapi siapa yang tidak berhenti.  
-      Jadi, tetaplah bergerak meski perlahan.
+    <p class="text-xs text-slate-400 mb-8 leading-relaxed max-w-sm mx-auto">
+      Hidup ini bukan tentang siapa yang paling cepat, melainkan tentang siapa yang tidak pernah berhenti bergerak.
     </p>
 
-    <!-- BUTTON BACK -->
     <a href="https://mutiaraananda13579-pixel.github.io/Portofolio/" 
-       class="inline-block bg-gradient-to-r from-pink-500 via-blue-400 to-sky-500 hover:from-pink-600 hover:via-blue-600 hover:to-sky-700 px-8 py-3 rounded-full shadow-xl text-white font-semibold transition transform hover:scale-105 active:scale-95">
-      ⬅️ Kembali ke Beranda
+       class="inline-block bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 px-8 py-3 rounded-xl shadow-lg shadow-emerald-900/20 text-white font-semibold transition duration-300 transform hover:scale-[1.03] active:scale-95 border border-white/10">
+      <i class="fas fa-arrow-left mr-2 text-xs"></i> Kembali ke Beranda
     </a>
 
-    <p id="countdown" class="text-xs text-gray-500 mt-4"></p>
+    <p id="countdown" class="text-xs text-slate-500 mt-6 font-mono tracking-wide"></p>
 
   </div>
 
@@ -71,16 +98,16 @@
     let timeLeft = 10;
     const countdownEl = document.getElementById("countdown");
 
-    countdownEl.textContent = `Anda akan diarahkan otomatis dalam ${timeLeft} detik...`;
+    countdownEl.textContent = `Mengalihkan otomatis dalam ${timeLeft}s...`;
 
     const timer = setInterval(() => {
       timeLeft--;
-      countdownEl.textContent = `Anda akan diarahkan otomatis dalam ${timeLeft} detik...`;
+      countdownEl.textContent = `Mengalihkan otomatis dalam ${timeLeft}s...`;
 
-     if (timeLeft <= 0) {
-  clearInterval(timer);
-  window.location.href = "index.html";
-}
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = "index.html";
+      }
     }, 1000);
   </script>
 
