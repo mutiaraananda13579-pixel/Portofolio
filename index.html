@@ -52,33 +52,35 @@
       border-radius: 50%;
       pointer-events: none;
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      z-index: 10;
     }
 
-    /* Perbaikan Animasi Bintang Jatuh */
+    /* Animasi Bintang Jatuh - Meluncur Jelas Kebawah */
     @keyframes shooting {
       0% {
-        transform: rotate(-45deg) translateX(0);
+        transform: rotate(-40deg) translateX(0);
         opacity: 0;
       }
-      10% {
+      5% {
         opacity: 1;
       }
-      70% {
+      60% {
         opacity: 1;
       }
       100% {
-        transform: rotate(-45deg) translateX(-600px);
+        transform: rotate(-40deg) translateX(-1000px);
         opacity: 0;
       }
     }
     .shooting-star {
       position: absolute;
-      height: 2px;
-      background: linear-gradient(-90deg, #ffffff, rgba(0, 0, 0, 0));
+      height: 3px; /* Dibuat lebih tebal */
+      background: linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
       border-radius: 999px;
-      filter: drop-shadow(0 0 6px #ffffff);
+      filter: drop-shadow(0 0 8px #ffffff);
       pointer-events: none;
       opacity: 0;
+      z-index: 20; /* Di depan grid agar tidak tertutup */
     }
   </style>
 </head>
@@ -90,9 +92,12 @@
   <div class="glitter-star w-1.5 h-1.5 top-[950px] right-[8%]" style="animation: twinkle 3.5s infinite 0.5s;"></div>
   <div class="glitter-star w-1 h-1 top-[1500px] left-[5%]" style="animation: twinkle 2.8s infinite 1.5s;"></div>
 
-  <div class="shooting-star w-[120px] top-10 right-10" style="animation: shooting 5s linear infinite 1s;"></div>
-  <div class="shooting-star w-[150px] top-[500px] right-24" style="animation: shooting 7s linear infinite 3s;"></div>
-  <div class="shooting-star w-[100px] top-[1000px] right-5" style="animation: shooting 6s linear infinite 5s;"></div>
+  <div class="shooting-star w-[150px] top-10 right-5" style="animation: shooting 4s linear infinite 0.5s;"></div>
+  <div class="shooting-star w-[180px] top-[250px] right-[20%]" style="animation: shooting 5s linear infinite 2s;"></div>
+  <div class="shooting-star w-[130px] top-[500px] right-10" style="animation: shooting 3.5s linear infinite 1.2s;"></div>
+  <div class="shooting-star w-[160px] top-[750px] right-[35%]" style="animation: shooting 6s linear infinite 4s;"></div>
+  <div class="shooting-star w-[140px] top-[1100px] right-2" style="animation: shooting 4.5s linear infinite 1.8s;"></div>
+  <div class="shooting-star w-[170px] top-[1400px] right-[15%]" style="animation: shooting 5.5s linear infinite 3.2s;"></div>
 
   <header class="flex justify-between items-center bg-slate-900/40 backdrop-blur-md py-6 px-8 rounded shadow m-4 sm:m-10 sticky top-4 z-50 border border-white/10">
     <div class="flex items-center gap-3">
