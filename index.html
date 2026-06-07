@@ -28,10 +28,18 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       background-size: 40px 40px;
     }
+    /* Animasi Melayang untuk Foto/Blob */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="bg-grid-pattern min-h-screen">
-  <header class="flex justify-between items-center bg-white/10 backdrop-blur-md py-6 px-8 rounded shadow m-10 sticky top-0 z-50 border border-white/10">
+  <header class="flex justify-between items-center bg-white/10 backdrop-blur-md py-6 px-8 rounded shadow m-4 sm:m-10 sticky top-0 z-50 border border-white/10">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-full bg-pink shadow-lg overflow-hidden">
         <img src="galery.jpg" class="w-32 transition-transform duration-300 hover:rotate-6 hover:scale-110" />
@@ -39,21 +47,21 @@
       <h1 class="text-xl font-semibold text-white">Mutiara Ananda</h1>
     </div>
     <div class="flex items-center px-4 lg:hidden">
-      <button id="hamburger" type="button" class="relative z-20">
+      <button id="hamburger" type="button" class="relative z-50 block">
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
       </button>
     </div>
     <nav id="nav-menu"
-      class="absolute top-full right-6 bg-transparent w-auto
-             transform scale-0 opacity-0 transition duration-300 ease-in-out origin-top-right
-             lg:static lg:block lg:bg-transparent lg:shadow-none lg:w-auto lg:transform-none lg:opacity-100 lg:scale-100">
-        <ul class="block space-y-3 lg:space-y-0 lg:flex lg:space-x-6">
-        <li><a href="#about" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">About me</a></li>
-        <li><a href="#skills" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Skills</a></li>
-        <li><a href="#gallery" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Project</a></li>
-        <li><a href="#contact" class="block px-5 py-2 text-white bg-slate-800/80 backdrop-blur border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:text-white transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Contact</a></li>
+      class="absolute top-full right-4 left-4 p-4 rounded-xl bg-slate-900/90 backdrop-blur-lg border border-white/10 shadow-xl
+             transform scale-y-0 opacity-0 transition-all duration-300 ease-in-out origin-top z-40
+             lg:static lg:block lg:bg-transparent lg:border-none lg:shadow-none lg:w-auto lg:transform-none lg:opacity-100 lg:scale-100 lg:p-0">
+        <ul class="flex flex-col gap-3 lg:flex-row lg:gap-6">
+          <li><a href="#about" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">About me</a></li>
+          <li><a href="#skills" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Skills</a></li>
+          <li><a href="#gallery" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Project</a></li>
+          <li><a href="#contact" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Contact</a></li>
         </ul>
     </nav>
   </header>
@@ -81,19 +89,19 @@
     </a>
   </div>
 
-  <div class="w-full lg:w-1/2 mb-8 lg:mb-0 px-4 flex justify-center">
+  <div class="w-full lg:w-1/2 mb-8 lg:mb-0 px-4 flex justify-center animate-float">
     <div class="relative">
       <span
         class="absolute inset-0 flex items-center justify-center z-0 
-               w-[280px] sm:w-[340px] md:w-[400px] lg:w-[460px] mx-auto">
+               w-[280px] sm:w-[340px] md:w-[400px] lg:w-[460px] mx-auto opacity-80">
         <svg viewBox="0 0 200 200" class="w-full h-full">
-          <path fill="#38bdf8" 
+          <path fill="#14b8a6" 
             d="M40.4,-57.8C54.6,-53.7,70,-46.4,74.9,-34.5C79.7,-22.7,74,-6.4,65.2,4.8C56.4,16,44.5,22.1,36.9,33.4C29.3,44.6,26,61,16.8,69.2C7.6,77.3,-7.6,77.3,-19,71.1C-30.4,64.8,-38.2,52.3,-47.3,41.2C-56.4,30.2,-66.8,20.7,-74.1,7.2C-81.3,-6.2,-85.3,-23.5,-78.7,-35C-72,-46.6,-54.7,-52.3,-39.8,-56.1C-24.9,-59.9,-12.4,-61.6,0.3,-62.1C13.1,-62.6,26.2,-61.9,40.4,-57.8Z" 
             transform="translate(100 100)" />
         </svg>
       </span>
       <img src="mutiara.png" alt="Foto saya" 
-        class="relative z-10 mx-auto w-[180px] sm:w-[240px] md:w-[280px] lg:w-[320px] rounded-full object-cover shadow-lg" />
+        class="relative z-10 mx-auto w-[180px] sm:w-[240px] md:w-[280px] lg:w-[320px] rounded-full object-cover shadow-xl border-4 border-slate-800" />
     </div>
   </div>
 </section>
@@ -103,25 +111,25 @@
       <h2 class="text-4xl font-bold text-white">Project</h2>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
-      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10 transition duration-300 hover:scale-[1.02] hover:border-teal-500/50 hover:shadow-teal-500/10">
         <img src="produk.png" alt="produk" class="w-full h-64 object-cover rounded-lg">
         <p class="text-sm text-slate-300 mt-2">
           Tampilan produk yang pernah saya kembangkan.
         </p>
       </div>
-      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10 transition duration-300 hover:scale-[1.02] hover:border-teal-500/50 hover:shadow-teal-500/10">
         <img src="admin.png" alt="perpus admin" class="w-full h-64 object-cover rounded-lg">
         <p class="text-sm text-slate-300 mt-2">
           Dashboard admin perpustakaan.
         </p>
       </div>
-      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10 transition duration-300 hover:scale-[1.02] hover:border-teal-500/50 hover:shadow-teal-500/10">
         <img src="e-commerce.png" alt="ecommerce" class="w-full h-64 object-cover rounded-lg">
         <p class="text-sm text-slate-300 mt-2">
           Dashboard e-commerce.
         </p>
       </div>
-      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10">
+      <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden p-4 border border-white/10 transition duration-300 hover:scale-[1.02] hover:border-teal-500/50 hover:shadow-teal-500/10">
         <img src="login.png" alt="login perpus" class="w-full h-64 object-cover rounded-lg">
         <p class="text-sm text-slate-300 mt-2">
           Halaman login perpustakaan.
@@ -130,7 +138,7 @@
     </div>
   </div>
 </section>
-<section id="skills" class="pt-20 pb-16 bg-slate-850 
+<section id="skills" class="pt-20 pb-16 bg-slate-900/40 backdrop-blur
        m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg border border-white/10">
   <div class="container mx-auto px-6 sm:px-10">
     <div class="text-center mb-12">
@@ -140,17 +148,17 @@
       </h2>
     </div>
     <div class="flex flex-wrap items-center justify-center gap-6">
-      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition">
+      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition duration-300 hover:scale-110">
         <img src="react.png" alt="react" class="bg-white p-2 rounded">
       </a>
-      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition">
+      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition duration-300 hover:scale-110">
         <img src="laravel.svg" alt="laravel" class="bg-white p-2 rounded">
       </a>
-      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition">
+      <a href="#" class="max-w-[100px] opacity-80 hover:opacity-100 transition duration-300 hover:scale-110">
         <img src="w3_css-official.svg" alt="css" class="bg-white p-2 rounded">
       </a>
       <a href="https://tailwindcss.com" target="_blank"
-         class="max-w-[100px] opacity-80 hover:opacity-100 transition">
+         class="max-w-[100px] opacity-80 hover:opacity-100 transition duration-300 hover:scale-110">
         <img src="Tailwind_CSS_Logo.svg.png" alt="tailwind" class="bg-white p-2 rounded">
       </a>
     </div>
@@ -162,18 +170,18 @@
 
     <form id="contactForm" action="https://formspree.io/f/xldwalbo" method="POST">
       <input 
-        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         type="text" name="Nama" placeholder="Nama Lengkap" required
       />
 
       <input 
-        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500 transition"
         type="email" name="Email" placeholder="Email" required
       />
 
       <textarea 
         rows="4" name="Pesan"
-        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+        class="w-full mb-4 p-3 bg-slate-800 text-white border border-slate-700 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
         placeholder="Tuliskan Pesanmu..." required
       ></textarea>
 
@@ -205,19 +213,19 @@
 </script>
 
   <section class="flex justify-center px-6 sm:px-16 py-10 
-                 bg-slate-850 text-white m-4 sm:m-10 
+                 bg-slate-900/40 backdrop-blur text-white m-4 sm:m-10 
                  rounded-2xl shadow-lg border border-white/10">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
 
     <div class="flex items-center justify-center sm:justify-between 
-            bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md flex-wrap gap-2">
+            bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md flex-wrap gap-2 transition duration-300 hover:border-sky-500/30">
       <h2 class="text-lg font-semibold text-white">📧 Email</h2>
       <a href="mailto:mutiarananda13579@gmail.com" 
       class="text-sky-400 hover:text-purple-400 font-medium break-all">
         mutiarananda13579@gmail.com
       </a>
     </div>
-    <div class="flex items-center justify-between bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md">
+    <div class="flex items-center justify-between bg-slate-800 border border-white/5 rounded-xl p-4 shadow-md transition duration-300 hover:border-sky-500/30">
       <h2 class="text-lg font-semibold text-white">📞 Telepon</h2>
       <a href="tel:083139591080" 
          class="text-sky-400 hover:text-purple-400 font-medium">
@@ -246,14 +254,15 @@
 
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("hamburger-active");
-      navMenu.classList.toggle("scale-0");
+      navMenu.classList.toggle("scale-y-0");
       navMenu.classList.toggle("opacity-0");
     });
+    
     // Tutup menu saat klik link
     document.querySelectorAll("#nav-menu a").forEach(link =>
       link.addEventListener("click", () => {
         hamburger.classList.remove("hamburger-active");
-        navMenu.classList.add("scale-0", "opacity-0");
+        navMenu.classList.add("scale-y-0", "opacity-0");
       })
     );
   </script>
