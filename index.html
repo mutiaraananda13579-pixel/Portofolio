@@ -68,13 +68,13 @@
         opacity: 1;
       }
       100% {
-        transform: rotate(-40deg) translateX(-400px); /* Jarak meluncur disingkat agar performa lancar */
+        transform: rotate(-40deg) translateX(-400px);
         opacity: 0;
       }
     }
     .shooting-star {
       position: absolute;
-      height: 2px; /* Dibuat ramping estetik mirip foto */
+      height: 2px;
       background: linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
       border-radius: 999px;
       filter: drop-shadow(0 0 6px #ffffff);
@@ -144,7 +144,7 @@
       <div class="w-full max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-left mb-6 lg:mb-0">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Hi, I'm Mutiara Ananda</h2>
         <p class="text-slate-300 mb-3 leading-relaxed text-justify">
-          Saya adalah lulusan SMK jurusan Rekayasa Perangkat Lunak yang memiliki ketertarikan di bidang teknologi dan pengolahan data. Selama masa pendidikan, saya telah mempelajari berbagai dasar seperti pembuatan website, pengelolaan data, serta penggunaan perangkat lunak pendukung lainnya.
+          Saya adalah lulusan SMK jurusan Rekayasa Perangkat Lunak yang memiliki ketertarikan di bidang teknologi dan pengolahan data. Selama masa pendidikan, saya telah mempelajari berbagai dasar seperti pembuatan website, pengelolaan data, serta penggunaan perangkat lumpak pendukung lainnya.
         </p>
         <p class="text-slate-300 mb-3 leading-relaxed text-justify">
           Saya memiliki kemampuan untuk bekerja secara mandiri maupun dalam tim, serta terbiasa menyelesaikan tugas dengan teliti dan tepat waktu. Selain itu, saya juga memiliki semangat belajar yang tinggi dan mampu beradaptasi dengan lingkungan serta hal baru.
@@ -291,7 +291,7 @@
       })
     );
 
-    // 4. SCRIPT MODIFIKASI: Efek Hujan Meteor Intensitas Tinggi (Banyak & Ringan)
+    // 4. Script Hujan Meteor Otomatis
     function createShootingStar() {
       const container = document.getElementById('shooting-stars-container');
       if (!container) return;
@@ -302,11 +302,8 @@
       const bodyHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight);
       
       const randomTop = Math.floor(Math.random() * bodyHeight);
-      // Rentang sebaran horizontal dibuat lebih luas (0% - 90%)
       const randomRight = Math.floor(Math.random() * 90); 
-      // Ukuran diperpendek (70px - 130px) agar efek hujan meluncur terlihat tajam & cepat
       const randomWidth = Math.floor(Math.random() * 60) + 70;
-      // Waktu meluncur dibuat super cepat (1 sampai 2.5 detik)
       const randomDuration = (Math.random() * 1.5 + 1).toFixed(1);
 
       star.style.top = `${randomTop}px`;
@@ -316,13 +313,11 @@
 
       container.appendChild(star);
 
-      // Otomatis langsung dihapus dari memori begitu selesai animasi
       setTimeout(() => {
         star.remove();
       }, randomDuration * 1000);
     }
 
-    // Interval dipercepat drastis ke 200 milidetik (0.2 detik sekali meluncur)
     setInterval(createShootingStar, 200);
   </script>
 </body>
