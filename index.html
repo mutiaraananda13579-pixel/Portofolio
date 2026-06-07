@@ -20,26 +20,47 @@
       transform-origin: bottom left;
       transform: rotate(-45deg);
     }
-    /* Grid Pattern Estetik */
+    /* Grid Pattern Estetik & Lebih Menonjol */
     .bg-grid-pattern {
       background-color: #0f172a; /* Slate 900 */
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
       background-size: 40px 40px;
+      position: relative;
+      overflow-x: hidden;
     }
-    /* Animasi Melayang untuk Foto/Blob */
+    /* Efek Animasi Melayang */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
     }
     .animate-float {
       animation: float 4s ease-in-out infinite;
     }
+    /* Efek Glitter Bintang */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .glitter-star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
   </style>
 </head>
 <body class="bg-grid-pattern min-h-screen">
-  <header class="flex justify-between items-center bg-white/10 backdrop-blur-md py-6 px-8 rounded shadow m-4 sm:m-10 sticky top-0 z-50 border border-white/10">
+
+  <div class="glitter-star w-1 h-1 top-20 left-10" style="animation: twinkle 3s infinite 0.5s;"></div>
+  <div class="glitter-star w-1.5 h-1.5 top-40 right-20" style="animation: twinkle 2.5s infinite 1s;"></div>
+  <div class="glitter-star w-1 h-1 top-[500px] left-1/4" style="animation: twinkle 4s infinite 0.2s;"></div>
+  <div class="glitter-star w-2 h-2 top-[800px] right-1/3" style="animation: twinkle 3.5s infinite 1.5s;"></div>
+  <div class="glitter-star w-1 h-1 top-[1200px] left-12" style="animation: twinkle 2.8s infinite 0.7s;"></div>
+
+  <header class="flex justify-between items-center bg-slate-900/40 backdrop-blur-md py-6 px-8 rounded shadow m-4 sm:m-10 sticky top-4 z-50 border border-white/10">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-full bg-pink shadow-lg overflow-hidden">
         <img src="galery.jpg" class="w-32 transition-transform duration-300 hover:rotate-6 hover:scale-110" />
@@ -47,17 +68,16 @@
       <h1 class="text-xl font-semibold text-white">Mutiara Ananda</h1>
     </div>
     <div class="flex items-center px-4 lg:hidden">
-      <button id="hamburger" type="button" class="relative z-50 block">
+      <button id="hamburger" type="button" class="relative z-50 focus:outline-none">
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
         <span class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"></span>
       </button>
     </div>
     <nav id="nav-menu"
-      class="absolute top-full right-4 left-4 p-4 rounded-xl bg-slate-900/90 backdrop-blur-lg border border-white/10 shadow-xl
-             transform scale-y-0 opacity-0 transition-all duration-300 ease-in-out origin-top z-40
-             lg:static lg:block lg:bg-transparent lg:border-none lg:shadow-none lg:w-auto lg:transform-none lg:opacity-100 lg:scale-100 lg:p-0">
-        <ul class="flex flex-col gap-3 lg:flex-row lg:gap-6">
+      class="hidden absolute top-full right-0 left-0 p-6 m-4 rounded-xl bg-slate-900/95 backdrop-blur-xl border border-white/10 shadow-2xl z-40
+             lg:static lg:flex lg:bg-transparent lg:border-none lg:shadow-none lg:w-auto lg:p-0 lg:m-0">
+        <ul class="flex flex-col gap-4 w-full lg:flex-row lg:gap-6">
           <li><a href="#about" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">About me</a></li>
           <li><a href="#skills" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Skills</a></li>
           <li><a href="#gallery" class="block px-5 py-2.5 text-white bg-slate-800/90 border border-white/10 rounded-full shadow-md hover:bg-teal-500 hover:border-teal-400 transition duration-300 text-center lg:bg-transparent lg:border-none lg:shadow-none lg:text-slate-300 lg:hover:text-teal-400">Project</a></li>
@@ -69,7 +89,7 @@
 <section id="about" 
   class="flex flex-col-reverse lg:flex-row items-center justify-around 
          px-4 sm:px-6 lg:px-10 pt-20 pb-16
-         bg-slate-900/60 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg relative border border-white/10">
+         bg-slate-900/60 backdrop-blur m-4 sm:m-6 lg:m-10 rounded-2xl shadow-lg relative border border-white/10 transition duration-300 hover:border-white/20">
 
     <div class="w-full max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-left mb-6 lg:mb-0">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
@@ -83,7 +103,7 @@
     </p>
     <a 
       href="#contact"
-      class="inline-block bg-blue-600 text-white px-6 py-3 mt-3 rounded-lg shadow 
+      class="inline-block bg-blue-600 text-white px-6 py-3 mt-3 rounded-lg shadow-md 
              hover:bg-blue-700 active:scale-95 transition">
       📞 Contact Me
     </a>
@@ -101,7 +121,7 @@
         </svg>
       </span>
       <img src="mutiara.png" alt="Foto saya" 
-        class="relative z-10 mx-auto w-[180px] sm:w-[240px] md:w-[280px] lg:w-[320px] rounded-full object-cover shadow-xl border-4 border-slate-800" />
+        class="relative z-10 mx-auto w-[180px] sm:w-[240px] md:w-[280px] lg:w-[320px] rounded-full object-cover shadow-2xl border-4 border-slate-800" />
     </div>
   </div>
 </section>
@@ -248,21 +268,29 @@
       }
     };
 
-    // Toggle hamburger
+    // Toggle hamburger dengan logika display aman
     const hamburger = document.querySelector("#hamburger");
     const navMenu = document.querySelector("#nav-menu");
 
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("hamburger-active");
-      navMenu.classList.toggle("scale-y-0");
-      navMenu.classList.toggle("opacity-0");
+      
+      // Mengubah display class agar tidak menutupi click event
+      if(navMenu.classList.contains("hidden")) {
+        navMenu.classList.remove("hidden");
+        navMenu.classList.add("block");
+      } else {
+        navMenu.classList.add("hidden");
+        navMenu.classList.remove("block");
+      }
     });
     
     // Tutup menu saat klik link
     document.querySelectorAll("#nav-menu a").forEach(link =>
       link.addEventListener("click", () => {
         hamburger.classList.remove("hamburger-active");
-        navMenu.classList.add("scale-y-0", "opacity-0");
+        navMenu.classList.add("hidden");
+        navMenu.classList.remove("block");
       })
     );
   </script>
